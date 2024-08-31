@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AKTU GATE Preparation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand-logo">
+            <img src="images/LOGO-WITH-NAAC.png" alt="AKTU GATE Logo">
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#">My Courses</a></li>
+                <li><a href="#">Mock Tests</a></li>
+                <li><a href="#">Study Materials</a></li>
+                <li><a href="#">Progress</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Header -->
+        <header class="dashboard-header">
+            <h1>Welcome, [User Name]</h1>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Profile Section -->
+            <section class="profile card">
+                <div class="profile-info">
+                    <img src="images/user.jpg" alt="[User Name]" class="profile-photo">
+                    <div class="profile-details">
+                        <h2>[User Name]</h2>
+                        <p><strong>Score:</strong> [Overall Score]</p>
+                        <p><strong>Online Test Score:</strong> [Test Score]</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="progress card">
+                <h2>Progress</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 75%;"></div>
+                </div>
+                <p>75% of your study plan completed</p>
+            </section>
+
+            <!-- Pie Chart Section -->
+            
+
+            <!-- Graph Section -->
+            <section class="graph-section card">
+                <h2>Test Scores Over Time</h2>
+                <canvas id="lineChart"></canvas>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 AKTU GATE Preparation. All rights reserved.</p>
+    </footer>
+
+    <!-- Chart.js Script -->
+    <script>
+       
+
+        // Line Chart
+        const ctxLine = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Replace with actual months or time periods
+                datasets: [{
+                    label: 'Test Scores',
+                    data: [85, 88, 90, 92, 94, 96], // Replace with actual data
+                    borderColor: '#36a2eb',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' points';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
